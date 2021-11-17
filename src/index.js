@@ -2,8 +2,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     // global variable corral
         // NS - 50 to 100 names each array? I'll probably google list of funny adjectives/nouns or something 
-    const firstNames = ["Cornelius", "Whiskers", "David-Bowie", "Fine Gentleman", "Beef",];
-    const lastNames = ["Splendifferous", "Stroganoff", "McCutieson", "The White", "of House Lannister", "Chowtime",];
+    const firstNames = ["Cornelius", "Whiskers", "David-Bowie", "Fine Gentleman", "Beef", "Rigmarole", "Lazy", "Benjamin",
+                         "Henrietta", "Lady", "Hambone", "Slippers", "Alfred", "Titania", "Gwenivere", "Hercules", "Lil' Cousin",
+                         "Edmond", "Count", "Dmitri", "Helga", "Sally", "Squishy", "Doctor", "Sterling", "Axel", "Mittens",
+                          "Lazer", "French Chef", "Corncob", "Grandma", "Patagucci", "Espresso", "Arthur", "Dom", "Popcorn", 
+                          "Khajiit", "Bastion", "Love", "Chrono",];
+    const lastNames = ["Splendifferous", "Stroganoff", "McCutieson", "The White", "of House Lannister", "Chowtime",
+                        "Inkle", "Mollycoddle", "Winklepicker", "Gardyloo", "Cattywampus", "The Pig", "Fubbins", "of Perth", "Litter Spiller",
+                         "The Brutal", "Tarnhelm", "Skywalker", "Von Smeagledorf", "Le Tired", "Octothorpe", "Catnip-Lover", 
+                         "Dollop", "Ramshackle", "Dumbledore", "Switchblade", "Hides-His-Eyes", "The Whisperer", "Unseen", "Rainbow", "Blasé", 
+                         "XIII", "Baggins", "Jones", "Tiger-tail", "Katmandu", "Benedetto", "All Curled Up", "Dijon", "Lohan", "le Fay",];
     const statsToRoll = ["Meowability", "Feline Ferocity", "Cuddle Prowess"];
 
     const rollButton = document.querySelector("#roll-btn");
@@ -34,7 +42,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const catName = makeEl("h3");
         const catStats = makeEl("ul");
 
-        const eachStat = makeEl("li");
+        
         
         // set catCard attributes
         catCard.id = "generated-cat"
@@ -48,25 +56,30 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catName.textContent = rollName();
 
         // set stats
-            catStats.innerHTML = rollStats();
+        catStats.innerHTML = rollStats();
     
         //// NS - I tried to make the stats more dynamic so we could
         //// just change the statsToRoll array as needed, but for some
         //// reason, this code kept overwriting the first two <li> tags
+
+    //   const eachStat = makeEl("li");
     //   statsToRoll.forEach(stat => {
     //     catStats.appendChild(eachStat);
     //     eachStat.textContent = rollStats(stat);
     //   })
   
+
       //  add username submit event listener 
-      
+      //  Could possibly generate a thumbnail to save multiple cards
+
+           
   
       // append DOM elements to catCard
-      catCard.append(catImg, catName, catStats);
-    //   eachStat.append
+         catCard.append(catImg, catName, catStats);
+
       
       // append catCard to catContainer
-      catContainer.append(catCard);
+         catContainer.append(catCard);
       })
     }
 
@@ -83,7 +96,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     // this function rolls for stats. It invokes the statsCalc to make
     // higher stats rarer than lower stats
-    function rollStats() {
+    function rollStats(stat) {
         let meowability = statsCalc();
         let felineFerocity = statsCalc();
         let cuddleProwess = statsCalc();
@@ -122,16 +135,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
         return stat;
     }
-
-
-    // rollName();
-    // rollStats();
-
-    // cat info and reviews
-    
-    // nav bar?
-    
-    // submission forms
  
 }) // end DOMContentLoaded
 
