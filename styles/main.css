@@ -129,3 +129,9 @@ form button[type="submit"] {
 .cat-card:hover {
   box-shadow: 0 20px 16px 0 rgba(0, 0, 0, 0.685);
 }
+
+.center-screen {
+  width: 100%;
+   text-align: center;
+}
+
