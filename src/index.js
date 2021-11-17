@@ -16,11 +16,35 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     const rollButton = document.querySelector("#roll-btn");
     const catContainer = document.querySelector("#cat-container");
+    const diceContainer = document.querySelector("#dice-container"); //Declaring a diceContainer variable to reference in renderRollDice function
     const makeEl = el => document.createElement(el);
 
     const catURL = "https://cataas.com/cat?json=true";
 
-    rollButton.addEventListener("click", renderCat);
+    // adding a new event listener for the renderRollDice Function
+    rollButton.addEventListener("click", renderRollDice)
+
+    // defining renderRollDice Function. It creates the button image elements and appends to the catContainer location. After 3000 milliseconds
+    // or 3 seconds, the buttonImg is removed and the catCard is displayed
+    function renderRollDice() {
+        const buttonImg = makeEl("img");
+        buttonImg.src = "https://c.tenor.com/S41MIiFewhoAAAAC/dice-ballin.gif"
+        buttonImg.alt = "Rolling the Dice"
+        diceContainer.append(buttonImg)
+
+        //remove the roll-dice button image after 3 seconds
+        setTimeout(function() {
+            buttonImg.remove();
+          }, 2000);
+        }
+    rollButton.addEventListener("click", function () { //using set TimeOut to delay the renderCat by 3000 milliseconds (3 seconds)
+
+        $this = this;
+        setTimeout(function() {
+            $this.parentNode.parentNode.style.outline = $this.parentNode.parentNode.dataset.ans_outline; //this is jQeuery (I think) code found on Google
+            renderCat()
+        }, 2000)
+    });
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
