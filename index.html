@@ -26,12 +26,14 @@
         <h2 id="cat-name">Welcome to</h2>
         <img
           id="cat-trax-banner"
+          class="center-screen"
           alt="Cat Trax Banner"
           src="https://drive.google.com/uc?export=download&id=1WUc23PBryqPBa2_CvmZX1Fi0KDvVXauj"
           />
         <p>
           <em id="cat-description">Roll 'em, kitties!</em>
         </p>
+        <p id ="dice-container"></p> <!-- Adding an element for the roll-dice gif to reference in index.js-->
 
         <div id="cat-roller">
           <button id="roll-btn" class="comment-button" type="click">ROLL FOR CATZ</button>
@@ -40,8 +42,11 @@
         <form id="user-id-submit">
         <label for="submit-owner"></label>
         <textarea id="owner-name" placeholder="Your User Name"></textarea>
-        <button type="submit">Claim Cat Trax</button>
+        <button type="submit" id="save-button">Claim Cat Trax</button>
         </form>
+      </div>
+      <div id="menagerie">
+        <h3>Cat Menagerie</h3>
       </div>
     </main>
   </body>
