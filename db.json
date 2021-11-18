@@ -1,67 +1,94 @@
 {
-    "cats": [
-      {
-        "name": "Doctor The White",
-        "img": "https://cataas.com//cat/59f881e80fbbc42ac6842821",
-        "meowability": 5,
-        "felineFerocity": 5,
-        "cuddleProwess": 3,
-        "userName": "kldjfldasjf",
-        "id": 1
-      },
-      {
-        "name": "Hercules Catnip-Lover",
-        "img": "https://cataas.com//cat/5fa2e44851e6080010835764",
-        "meowability": 1,
-        "felineFerocity": 3,
-        "cuddleProwess": 7,
-        "userName": "dlafjldsjfdls",
-        "id": 4
-      },
-      {
-        "name": "Helga Tarnhelm",
-        "img": "https://cataas.com//cat/5be11710cfff09000f685f4c",
-        "meowability": 6,
-        "felineFerocity": 6,
-        "cuddleProwess": 8,
-        "userName": "sdfdsfds",
-        "id": 5
-      },
-      {
-        "name": "Helga Tarnhelm",
-        "img": "https://cataas.com//cat/5be11710cfff09000f685f4c",
-        "meowability": 6,
-        "felineFerocity": 6,
-        "cuddleProwess": 8,
-        "userName": "sdfdsfsd",
-        "id": 6
-      },
-      {
-        "name": "Doctor Le Tired",
-        "img": "https://cataas.com//cat/60903293ad4265001863bd34",
-        "meowability": 6,
-        "felineFerocity": 5,
-        "cuddleProwess": 5,
-        "userName": "aljdfls",
-        "id": 7
-      },
-      {
-        "name": "Khajiit Hides-His-Eyes",
-        "img": "https://cataas.com//cat/5f8de0833deac500178f88f4",
-        "meowability": 4,
-        "felineFerocity": 3,
-        "cuddleProwess": 6,
-        "userName": "sfa",
-        "id": 8
-      },
-      {
-        "name": "Edmond Litter Spiller",
-        "img": "https://cataas.com//cat/5fa0e631d756950018646210",
-        "meowability": 7,
-        "felineFerocity": 9,
-        "cuddleProwess": 2,
-        "userName": "ddfasdf",
-        "id": 9
-      }
-    ]
-  }
+  "cats": [
+    {
+      "name": "Doctor The White",
+      "img": "https://cataas.com//cat/59f881e80fbbc42ac6842821",
+      "meowability": 5,
+      "felineFerocity": 5,
+      "cuddleProwess": 3,
+      "userName": "kldjfldasjf",
+      "id": 1
+    },
+    {
+      "name": "Hercules Catnip-Lover",
+      "img": "https://cataas.com//cat/5fa2e44851e6080010835764",
+      "meowability": 1,
+      "felineFerocity": 3,
+      "cuddleProwess": 7,
+      "userName": "dlafjldsjfdls",
+      "id": 4
+    },
+    {
+      "name": "Helga Tarnhelm",
+      "img": "https://cataas.com//cat/5be11710cfff09000f685f4c",
+      "meowability": 6,
+      "felineFerocity": 6,
+      "cuddleProwess": 8,
+      "userName": "sdfdsfds",
+      "id": 5
+    },
+    {
+      "name": "Helga Tarnhelm",
+      "img": "https://cataas.com//cat/5be11710cfff09000f685f4c",
+      "meowability": 6,
+      "felineFerocity": 6,
+      "cuddleProwess": 8,
+      "userName": "sdfdsfsd",
+      "id": 6
+    },
+    {
+      "name": "Doctor Le Tired",
+      "img": "https://cataas.com//cat/60903293ad4265001863bd34",
+      "meowability": 6,
+      "felineFerocity": 5,
+      "cuddleProwess": 5,
+      "userName": "aljdfls",
+      "id": 7
+    },
+    {
+      "name": "Khajiit Hides-His-Eyes",
+      "img": "https://cataas.com//cat/5f8de0833deac500178f88f4",
+      "meowability": 4,
+      "felineFerocity": 3,
+      "cuddleProwess": 6,
+      "userName": "sfa",
+      "id": 8
+    },
+    {
+      "name": "Edmond Litter Spiller",
+      "img": "https://cataas.com//cat/5fa0e631d756950018646210",
+      "meowability": 7,
+      "felineFerocity": 9,
+      "cuddleProwess": 2,
+      "userName": "ddfasdf",
+      "id": 9
+    },
+    {
+      "name": "Lazy Tiger-tail",
+      "img": "https://cataas.com//cat/5d7b9d247ae37c0018f4c97c",
+      "meowability": 7,
+      "felineFerocity": 6,
+      "cuddleProwess": 6,
+      "userName": "fsfsfd",
+      "id": 10
+    },
+    {
+      "name": "Popcorn Katmandu",
+      "img": "https://cataas.com//cat/613b5f368aab7c00185108f3",
+      "meowability": 5,
+      "felineFerocity": 8,
+      "cuddleProwess": 5,
+      "userName": "will",
+      "id": 11
+    },
+    {
+      "name": "Arthur Benedetto",
+      "img": "https://cataas.com//cat/5ca2ff9f5298830011cd86cd",
+      "meowability": 6,
+      "felineFerocity": 3,
+      "cuddleProwess": 4,
+      "userName": "bob",
+      "id": 12
+    }
+  ]
+}
