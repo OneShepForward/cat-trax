@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', (e) => {
 
     // global variable corral
-        // NS - 50 to 100 names each array? I'll probably google list of funny adjectives/nouns or something 
+    // NS - 50 to 100 names each array? I'll probably google list of funny adjectives/nouns or something 
     const firstNames = ["Cornelius", "Whiskers", "David-Bowie", "Fine Gentleman", "Beef", "Rigmarole", "Lazy", "Benjamin",
                          "Henrietta", "Lady", "Hambone", "Slippers", "Alfred", "Titania", "Gwenivere", "Hercules", "Lil' Cousin",
                          "Edmond", "Count", "Dmitri", "Helga", "Sally", "Squishy", "Doctor", "Sterling", "Axel", "Mittens",
@@ -12,99 +12,138 @@ document.addEventListener('DOMContentLoaded', (e) => {
                          "The Brutal", "Tarnhelm", "Skywalker", "Von Smeagledorf", "Le Tired", "Octothorpe", "Catnip-Lover", 
                          "Dollop", "Ramshackle", "Dumbledore", "Switchblade", "Hides-His-Eyes", "The Whisperer", "Unseen", "Rainbow", "Blasé", 
                          "XIII", "Baggins", "Jones", "Tiger-tail", "Katmandu", "Benedetto", "All Curled Up", "Dijon", "Lohan", "le Fay",];
-    const statsToRoll = ["Meowability", "Feline Ferocity", "Cuddle Prowess"];
 
-    const rollButton = document.querySelector("#roll-btn");
-    const catContainer = document.querySelector("#cat-container");
-    const makeEl = el => document.createElement(el);
-
+    const BASE_URL = 'http://localhost:3000/cats';
     const catURL = "https://cataas.com/cat?json=true";
 
-    rollButton.addEventListener("click", renderCat);
+    const saveButton = document.querySelector('#save-button');
+    const rollButton = document.querySelector("#roll-btn");
+    const catContainer = document.querySelector("#cat-container");
+    const usernameForm = document.querySelector('#owner-name')
+    const menagerie = document.querySelector('#menagerie');
+    
+    const makeEl = el => document.createElement(el);
+    
+    let currentCat = {};
+    
+    fetchMenagerie();
+    
+    rollButton.addEventListener("click", createCat);
+    saveButton.addEventListener("click", e => {
+        e.preventDefault();
+        if(Object.keys(currentCat).length!==0) {
+            addCatToMenagerie(currentCat);
+        }
+    })
+
+    function populateMenagerie(cat) {
+        const catCard = makeEl('div');
+        const catPic = makeEl('img');
+        const catName = makeEl('h3');
+        const userName = makeEl('h4');
+
+        catCard.id = `cat-${cat.id}`
+        catCard.className = 'mini-cat';
+        catPic.src = cat.img;
+        catPic.alt = cat.name;
+        catPic.className = 'mini-cat-image';
+        catName.textContent = cat.name;
+        userName.textContent = `Claimed by ${cat.userName}`;
+        
+        catCard.append(catPic,catName,userName);
+        menagerie.append(catCard);
+    }
+
+    function fetchMenagerie() {
+        fetch(BASE_URL)
+        .then(res=>res.json())
+        .then(cats=>cats.forEach(cat=>populateMenagerie(cat)))
+        .catch(error=>console.error("fetchMengarerie",error));
+    }
+
+    function addCatToMenagerie(cat) {
+        fetch(BASE_URL,{
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                ...cat, 
+                "userName": usernameForm.value,
+            }),  
+        })
+        .then(resp=>resp.json())
+        .then(populateMenagerie)
+        .catch(error=>console.error("addCatToMenagerie",error));
+    }
+
+    function createCat() {
+        fetch(catURL)
+        .then(r => r.json())
+        .then(catpic => {
+            currentCat = {
+                name: rollName(),
+                img: "https://cataas.com/"+catpic.url,
+                meowability: statsCalc(),
+                felineFerocity: statsCalc(),
+                cuddleProwess:  statsCalc(),
+            }
+            renderCat(currentCat);
+        })
+        .catch(error=>console.error("createCat",error));
+        
+        
+    }
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
-    // fetch(catURL)
-    //   .then(resp => resp.json())
-    //   .then(cat => console.log(cat.url))
-
-    function renderCat() {
-            // generate the name, picture, and stats
-        catContainer.innerHTML = ""
-        fetch(catURL)
-        .then(resp => resp.json())
-        .then(cat => {
+    function renderCat(cat) {
+        // generate the name, picture, and stats
+        catContainer.replaceChildren();
         
         const catCard = makeEl("div");
         const catImg = makeEl("img");
         const catName = makeEl("h3");
         const catStats = makeEl("ul");
+        const meow = makeEl('li');
+        const fero = makeEl('li');
+        const cuddle = makeEl('li');
 
-        
-        
         // set catCard attributes
         catCard.id = "generated-cat"
         catCard.className = "cat-card"
-            
+        
         // set catImg attributes
-        catImg.src = "https://cataas.com/" + cat.url
+        catImg.src = cat.img
         catImg.alt = "An amazing cat"
 
         // set catName
-        catName.textContent = rollName();
+        catName.textContent = cat.name;
 
         // set stats
-        catStats.innerHTML = rollStats();
-    
-        //// NS - I tried to make the stats more dynamic so we could
-        //// just change the statsToRoll array as needed, but for some
-        //// reason, this code kept overwriting the first two <li> tags
+        meow.textContent = "Meowability: "+cat.meowability;
+        fero.textContent = "Feline Ferocity: "+cat.felineFerocity;
+        cuddle.textContent = "Cuddle Prowess: "+cat.cuddleProwess;
+        catStats.append(meow,fero,cuddle);
+        
+        // append DOM elements to catCard
+        catCard.append(catImg, catName, catStats);
 
-    //   const eachStat = makeEl("li");
-    //   statsToRoll.forEach(stat => {
-    //     catStats.appendChild(eachStat);
-    //     eachStat.textContent = rollStats(stat);
-    //   })
-  
-
-      //  add username submit event listener 
-      //  Could possibly generate a thumbnail to save multiple cards
-
-           
-  
-      // append DOM elements to catCard
-         catCard.append(catImg, catName, catStats);
-
-      
-      // append catCard to catContainer
-         catContainer.append(catCard);
-      })
+        // append catCard to catContainer
+        catContainer.append(catCard);
     }
 
-    // this function gets two random numbers and pulls a first name
-    // and last name based on the index of the corresponding name array.
     function rollName() {
         let firstName = firstNames[getRandomInt(firstNames.length - 1)];
         let lastName = lastNames[getRandomInt(lastNames.length - 1)];
         let catName = `${firstName} ${lastName}`;
-        // console.log(firstNames.length - 1)
-        // console.log(catName);
         return catName;
     }
 
     // this function rolls for stats. It invokes the statsCalc to make
     // higher stats rarer than lower stats
-    function rollStats(stat) {
-        let meowability = statsCalc();
-        let felineFerocity = statsCalc();
-        let cuddleProwess = statsCalc();
-        return `<li>Meowability: ${meowability}</li><li>Feline Ferocity: ${felineFerocity}</li><li>Cuddle Prowess: ${cuddleProwess}</li>`;
-
-        // return `${stat}: ${statsCalc()}`;
-    }
-
     // calculates a stat by rolling two five-sided dice
     function statsCalc() {
         const randNum = getRandomInt(25);
@@ -136,5 +175,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
         return stat;
     }
  
-}) // end DOMContentLoaded
-
+})
