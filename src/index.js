@@ -108,8 +108,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
 
     function renderCat(cat) {
+        
+        // if cat card...then catcard.remove()
+
+        // if (document.querySelector('.cat-card')) {
+        //     document.querySelector('.cat-card').remove();
+        // }
+        
+        
         // generate the name, picture, and stats
         catContainer.replaceChildren();
+
         
         const catCard = makeEl("div");
         const catImg = makeEl("img");
@@ -140,7 +149,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catCard.append(catImg, catName, catStats);
 
         // append catCard to catContainer
-        catContainer.append(catCard);
+        const catRoller = document.querySelector('#cat-roller')
+        catRoller.parentNode.insertBefore(catCard,catRoller.nextSibling);
+        // document.querySelector('main').insertAfter(catRoller,catCard);
+
+        // catContainer.append(catCard);
     }
 
     function rollName() {
@@ -156,6 +169,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // defining renderRollDice Function. It creates the button image elements and appends to the catContainer location. After 3000 milliseconds
     // or 3 seconds, the buttonImg is removed and the catCard is displayed
     function renderRollDice() {
+
+        if (document.querySelector('.cat-card')) {
+            document.querySelector('.cat-card').remove();
+        }
+        
         const buttonImg = makeEl("img");
         buttonImg.src = "https://c.tenor.com/S41MIiFewhoAAAAC/dice-ballin.gif"
         buttonImg.alt = "Rolling the Dice"

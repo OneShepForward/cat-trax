@@ -52,13 +52,29 @@ main {
   width: 600px;
 }
 .mini-cat {
-  display:inline-block;
-  width:45%;
-  margin:auto;
-}
-.mini-cat-image {
-  width:100%;
   height:auto;
+  width:45%;
+  display: inline-block;
+  border: solid #690000;
+  font-size: 10px;
+  line-height: 5pt;
+  margin: 0px 0px 10px 10px;
+  background-color: rgb(250, 197, 128);
+  color:black;
+
+}
+
+.mini-cat:hover {
+  box-shadow: 0 20px 16px 0 rgba(0, 0, 0, 0.685);
+}
+
+.mini-cat-image {
+  object-fit: cover;
+  float:center;
+  width: 90%;
+  padding: 5px;
+  height: 300px;
+  
 }
 .cat-details h2 {
   font-size: 32px;
@@ -112,6 +128,18 @@ form button[type="submit"] {
   cursor: pointer;
 }
 
+.comment-button{
+  border: 5px solid black;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  background-color: #690000;
+  color: #fff;
+  padding: 7px 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 #cat-card li {
   background-color: #fff7bf;
   border-radius: 5px;
@@ -123,14 +151,19 @@ form button[type="submit"] {
   background-color: rgb(250, 197, 128);
   border: solid;
   border-color: #690000;
-  padding: 50px;
+  padding: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: auto;
-  float: left;
+  float: center;
   text-align: center;
-  width: auto;
-  height: auto;
+  max-width: 50%;
+  object-fit: cover;
+}
+
+.cat-card img {
+  width:90%;
+  height:auto;
 }
 
 .cat-card:hover {
@@ -140,5 +173,14 @@ form button[type="submit"] {
 .center-screen {
   width: 100%;
    text-align: center;
+}
+
+#menagerie {
+  display: table;
+  position:absolute;
+  left:32.5%;
+  margin:auto;
+  width: 35vw;
+  text-align: center;
 }
 
