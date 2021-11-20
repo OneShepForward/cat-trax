@@ -1,22 +1,5 @@
 {
   "cats": [
-    {
-      "name": "Gwenivere XIII",
-      "img": "https://cataas.com//cat/595f280a557291a9750ebf5f",
-      "meowability": 6,
-      "felineFerocity": 6,
-      "cuddleProwess": 9,
-      "userName": "willll y",
-      "id": 1
-    },
-    {
-      "name": "Cornelius Gardyloo",
-      "img": "https://cataas.com//cat/5c4bde008d32f1000fb94a3a",
-      "meowability": 6,
-      "felineFerocity": 7,
-      "cuddleProwess": 5,
-      "userName": "fsdfds",
-      "id": 2
-    }
+    
   ]
 }

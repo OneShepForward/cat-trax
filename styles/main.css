@@ -1,3 +1,8 @@
+* {
+  margin: 0; 
+  padding: 0;
+}
+
 body {
   box-sizing: border-box;
   margin: auto;
@@ -5,6 +10,11 @@ body {
   font-size: 14px;
   color: #404040;
   text-align: center;
+}
+
+html {
+  background-color: #ffffff;
+  background-image: linear-gradient(315deg, #ffffff 0%, #d7e1ec 74%) fixed;
 }
 
 header {
@@ -31,6 +41,12 @@ ul {
 
 li {
   list-style: none;
+  font-size: 20px;
+  color: whitesmoke;
+}
+
+li:hover {
+  color: firebrick;
 }
 
 nav ul {
@@ -53,16 +69,42 @@ main {
 }
 .mini-cat {
   height:auto;
-  width:45%;
+  width:30%;
   display: inline-block;
-  border: solid #690000;
-  font-size: 10px;
-  line-height: 5pt;
-  margin: 0px 0px 10px 10px;
-  background-color: rgb(250, 197, 128);
-  color:black;
-
+  border: solid black;
+  font-size: 15px;
+  line-height: 15pt;
+  color:whitesmoke;
+  position: relative;
+  border-radius: 10px;
+  background-image: url("https://media.istockphoto.com/vectors/space-starry-sky-background-vector-id833533150?k=20&m=833533150&s=170667a&w=0&h=MazmwAjyh7bzWz3Sl5jANd97uOyZqTUiS7faZHXyloY=");
+  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  margin: 10px;
+  zoom:1;
+  content:"";
+  transition: all .2s linear;
+  padding: 50px;
 }
+
+.mini-cat:before {
+  content: url(https://raw.githubusercontent.com/OneShepForward/cat-trax/main/assets/522112%20-%20v4.png);
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+.mini-cat:after {
+  content: url(https://raw.githubusercontent.com/OneShepForward/cat-trax/main/assets/522112%20-%20v4.png);
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  clear:both;
+}
+
+.mini-cat:hover {
+  cursor: pointer;
+  border-color: firebrick;
+  }
 
 .mini-cat:hover {
   box-shadow: 0 20px 16px 0 rgba(0, 0, 0, 0.685);
@@ -82,7 +124,13 @@ main {
 }
 
 .cat-details h3 {
-  font-size: 24px;
+  font-size: 40px;
+  background: -webkit-linear-gradient(rgb(0, 0, 0), firebrick);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: “Open Sans”, sans-serif;
+  color: #f5f5f5;
+  text-shadow: 0px -2px 4px #fff, 0px -2px 10px #FF3, 0px -10px 20px         #F90, 0px -20px 40px #C33;
 }
 
 .cat-details img {
@@ -103,7 +151,8 @@ textarea {
   border: 1px solid gray;
   padding: 5px;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 form button[type="click"] {
@@ -118,27 +167,48 @@ form button[type="click"] {
 }
 
 form button[type="submit"] {
-  border: 5px solid black;
-  font-size: 16px;
-  font-weight: 600;
+  border: 0px solid black;
   text-transform: uppercase;
-  background-color: #690000;
-  color: #fff;
-  padding: 7px 10px;
   cursor: pointer;
+  background-image: linear-gradient(to right, #000000 0%, firebrick 100%);
+	border-radius: 40px;
+  box-sizing: border-box;
+	color: whitesmoke;
+	display: block;
+	font: 1.125rem 'Oswald', Arial, sans-serif; /*18*/
+	height: 80px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	padding: 4px;
+	position: relative;
+  text-decoration: none;
+	text-transform: uppercase;
+	width: 264px;
+	z-index: 2;  
 }
 
 .comment-button{
-  border: 5px solid black;
-  font-size: 16px;
-  font-weight: 600;
+  border: 0px solid black;
   text-transform: uppercase;
-  background-color: #690000;
-  color: #fff;
-  padding: 7px 10px;
   cursor: pointer;
+  background-image: linear-gradient(to right, #000000 0%, firebrick 100%);
+	border-radius: 40px;
+  box-sizing: border-box;
+	color: whitesmoke;
+	display: block;
+	font: 1.125rem 'Oswald', Arial, sans-serif; /*18*/
+	height: 80px;
+	letter-spacing: 1px;
+	margin: 0 auto;
+	padding: 4px;
+	position: relative;
+  text-decoration: none;
+	text-transform: uppercase;
+	width: 264px;
+	z-index: 2;
   margin-bottom: 20px;
 }
+
 
 #cat-card li {
   background-color: #fff7bf;
@@ -148,10 +218,8 @@ form button[type="submit"] {
 }
 
 .cat-card {
-  background-color: rgb(250, 197, 128);
   border: solid;
-  border-color: #690000;
-  padding: 25px;
+  padding: 100px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   margin: auto;
@@ -159,16 +227,42 @@ form button[type="submit"] {
   text-align: center;
   max-width: 50%;
   object-fit: cover;
+  position: relative;
+  border-radius: 10px;
+  background-image: url("https://media.istockphoto.com/vectors/space-starry-sky-background-vector-id833533150?k=20&m=833533150&s=170667a&w=0&h=MazmwAjyh7bzWz3Sl5jANd97uOyZqTUiS7faZHXyloY=");
+  -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+  transition: all .2s linear;
 }
 
 .cat-card img {
-  width:90%;
+  width:100%;
   height:auto;
 }
 
 .cat-card:hover {
   box-shadow: 0 20px 16px 0 rgba(0, 0, 0, 0.685);
+  color: firebrick;
+  
 }
+
+.cat-card:before {
+  content: url(https://raw.githubusercontent.com/OneShepForward/cat-trax/main/assets/522112%20-%20v4.png);
+  position: absolute;
+  left: 5px;
+  top: 5px;
+}
+
+.cat-card:after {
+  content: url(https://raw.githubusercontent.com/OneShepForward/cat-trax/main/assets/522112%20-%20v4.png);
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+
+.cat-card:hover {
+  cursor: pointer;
+  }
 
 .center-screen {
   width: 100%;
@@ -178,9 +272,10 @@ form button[type="submit"] {
 #menagerie {
   display: table;
   position:absolute;
-  left:32.5%;
+  left:24.5%;
   margin:auto;
-  width: 35vw;
+  width: 50vw;
   text-align: center;
 }
+
 
