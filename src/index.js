@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const diceContainer = document.querySelector("#dice-container"); //Declaring a diceContainer variable to reference in renderRollDice function
     const usernameForm = document.querySelector('#owner-name')
     const menagerie = document.querySelector('#menagerie');
+    const textArea = document.querySelector("#owner-name");
     
     const makeEl = el => document.createElement(el);
     
@@ -29,12 +30,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
     
     fetchMenagerie();
     
-    rollButton.addEventListener("click", function () { //using set TimeOut to delay the renderCat by 3000 milliseconds (3 seconds)
+    rollButton.addEventListener("click", function () { //using set TimeOut to delay the renderCat by 2000 milliseconds (2 seconds)
 
         $this = this;
         setTimeout(function() {
             $this.parentNode.parentNode.style.outline = $this.parentNode.parentNode.dataset.ans_outline; //this is jQeuery (I think) code found on Google
             createCat()
+            textArea.style.display = "block";
+            saveButton.style.display = "block";
         }, 2000)
     });
     saveButton.addEventListener("click", e => {
@@ -50,6 +53,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const catName = makeEl('h3');
         const userName = makeEl('h4');
 
+        // Add catStatsBox
+        const catStatsBox = makeEl("span");
+
         catCard.id = `cat-${cat.id}`
         catCard.className = 'mini-cat';
         catPic.src = cat.img;
@@ -57,9 +63,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catPic.className = 'mini-cat-image';
         catName.textContent = cat.name;
         userName.textContent = `Claimed by ${cat.userName}`;
+
+        // catStatsBox text content
+        catStatsBox.className = "tooltiptext";
+        catStatsBox.textContent = "Meowibility: " + cat.meowability + "\r";
+        catStatsBox.textContent += `Feline Ferocity: ${cat.felineFerocity} \n`
+        catStatsBox.textContent += `Cuddle Prowess: ${cat.cuddleProwess}`
         
-        catCard.append(catPic,catName,userName);
+        // added catStatsBox to append
+        catCard.append(catPic,catName,userName,catStatsBox);
         menagerie.append(catCard);
+
+        // Add a mouseover hover event
+        // catCard.addEventListener("onmouseover", showStatBox)
     }
 
     function fetchMenagerie() {
@@ -179,7 +195,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         buttonImg.alt = "Rolling the Dice"
         diceContainer.append(buttonImg)
 
-        //remove the roll-dice button image after 3 seconds
+        //remove the roll-dice button image after 2 seconds
         setTimeout(function() {
             buttonImg.remove();
           }, 2000);
