@@ -53,21 +53,6 @@ li {
 li:hover {
   color: firebrick;
 }
-/*
-nav ul {
-  margin-left: 15px;
-}
-
-nav ul li {
-  padding: 5px;
-  cursor: pointer;
-}
-
-nav ul li:hover {
-  background-color: red;
-  color: #fff;
-}
-*/
 
 main {
   margin:auto;
