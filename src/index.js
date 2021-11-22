@@ -1,12 +1,11 @@
 document.addEventListener('DOMContentLoaded', (e) => {
 
     // global variable corral
-    // NS - 50 to 100 names each array? I'll probably google list of funny adjectives/nouns or something 
     const firstNames = ["Cornelius", "Whiskers", "David-Bowie", "Fine Gentleman", "Beef", "Rigmarole", "Lazy", "Benjamin",
                          "Henrietta", "Lady", "Hambone", "Slippers", "Alfred", "Titania", "Gwenivere", "Hercules", "Lil' Cousin",
                          "Edmond", "Count", "Dmitri", "Helga", "Sally", "Squishy", "Doctor", "Sterling", "Axel", "Mittens",
                           "Lazer", "French Chef", "Corncob", "Grandma", "Patagucci", "Espresso", "Arthur", "Dom", "Popcorn", 
-                          "Khajiit", "Bastion", "Love", "Chrono",];
+                         "Khajiit", "Bastion", "Love", "Chrono",];
     const lastNames = ["Splendifferous", "Stroganoff", "McCutieson", "The White", "of House Lannister", "Chowtime",
                         "Inkle", "Mollycoddle", "Winklepicker", "Gardyloo", "Cattywampus", "The Pig", "Fubbins", "of Perth", "Litter Spiller",
                          "The Brutal", "Tarnhelm", "Skywalker", "Von Smeagledorf", "Le Tired", "Octothorpe", "Catnip-Lover", 
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const saveButton = document.querySelector('#save-button');
     const rollButton = document.querySelector("#roll-btn");
     const catContainer = document.querySelector("#cat-container");
-    const diceContainer = document.querySelector("#dice-container"); //Declaring a diceContainer variable to reference in renderRollDice function
+    const diceContainer = document.querySelector("#dice-container");
     const usernameForm = document.querySelector('#owner-name')
     const menagerie = document.querySelector('#menagerie');
     const textArea = document.querySelector("#owner-name");
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
     fetchMenagerie();
     
     rollButton.addEventListener("click", function () { //using set TimeOut to delay the renderCat by 2000 milliseconds (2 seconds)
-
         $this = this;
         setTimeout(function() {
             $this.parentNode.parentNode.style.outline = $this.parentNode.parentNode.dataset.ans_outline; //this is jQeuery (I think) code found on Google
@@ -40,12 +38,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
             saveButton.style.display = "block";
         }, 2000)
     });
+
     saveButton.addEventListener("click", e => {
         e.preventDefault();
         if(Object.keys(currentCat).length!==0) {
             addCatToMenagerie(currentCat);
         }
-    })
+    });
 
     function populateMenagerie(cat) {
         const catCard = makeEl('div');
@@ -53,34 +52,30 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const catName = makeEl('h3');
         const userName = makeEl('h4');
         const deleteButton = makeEl('button');
-        // Add catStatsBox
         const catStatsBox = makeEl("span");
 
-        catCard.id = `cat-${cat.id}`
+        catCard.id = `cat-${cat.id}`;
         catCard.className = 'mini-cat';
+
         catPic.src = cat.img;
         catPic.alt = cat.name;
         catPic.className = 'mini-cat-image';
+
         catName.textContent = cat.name;
         userName.textContent = `Claimed by ${cat.userName}`;
+
         deleteButton.textContent = "Delete Cat";
         deleteButton.id = "deleteBttn";
         deleteButton.type = "click";
         deleteButton.addEventListener("click",deleteCat);
 
-
-        // catStatsBox text content
         catStatsBox.className = "tooltiptext";
         catStatsBox.textContent = "Meowibility: " + cat.meowability + "\r";
-        catStatsBox.textContent += `Feline Ferocity: ${cat.felineFerocity} \n`
-        catStatsBox.textContent += `Cuddle Prowess: ${cat.cuddleProwess}`
+        catStatsBox.textContent += `Feline Ferocity: ${cat.felineFerocity} \n`;
+        catStatsBox.textContent += `Cuddle Prowess: ${cat.cuddleProwess}`;
         
-        // added catStatsBox to append
         catCard.append(catPic,catName,userName,catStatsBox,deleteButton);
         menagerie.append(catCard);
-
-        // Add a mouseover hover event
-        // catCard.addEventListener("onmouseover", showStatBox)
     }
 
     function fetchMenagerie() {
@@ -119,9 +114,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             }
             renderCat(currentCat);
         })
-        .catch(error=>console.error("createCat",error));
-        
-        
+        .catch(error=>console.error("createCat",error));    
     }
 
     function deleteCat(event) {
@@ -135,25 +128,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
         })
         .then(resp=>resp.json())
         .then(event.target.parentNode.remove())
-        .catch(error=>console.error("addCatToMenagerie",error));;
+        .catch(error=>console.error("addCatToMenagerie",error));
     }
 
+    // the random integer is exclusive of the value used for "max"
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
 
     function renderCat(cat) {
-        
-        // if cat card...then catcard.remove()
-
-        // if (document.querySelector('.cat-card')) {
-        //     document.querySelector('.cat-card').remove();
-        // }
-        
-        
         // generate the name, picture, and stats
         catContainer.replaceChildren();
-
         
         const catCard = makeEl("div");
         const catImg = makeEl("img");
@@ -164,12 +149,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const cuddle = makeEl('li');
 
         // set catCard attributes
-        catCard.id = "generated-cat"
-        catCard.className = "cat-card"
+        catCard.id = "generated-cat";
+        catCard.className = "cat-card";
         
         // set catImg attributes
-        catImg.src = cat.img
-        catImg.alt = "An amazing cat"
+        catImg.src = cat.img;
+        catImg.alt = "An amazing cat";
 
         // set catName
         catName.textContent = cat.name;
@@ -184,11 +169,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catCard.append(catImg, catName, catStats);
 
         // append catCard to catContainer
-        const catRoller = document.querySelector('#cat-roller')
+        const catRoller = document.querySelector('#cat-roller');
         catRoller.parentNode.insertBefore(catCard,catRoller.nextSibling);
-        // document.querySelector('main').insertAfter(catRoller,catCard);
-
-        // catContainer.append(catCard);
     }
 
     function rollName() {
@@ -199,10 +181,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
 
     // adding a new event listener for the renderRollDice Function
-    rollButton.addEventListener("click", renderRollDice)
+    rollButton.addEventListener("click", renderRollDice);
 
-    // defining renderRollDice Function. It creates the button image elements and appends to the catContainer location. After 3000 milliseconds
-    // or 3 seconds, the buttonImg is removed and the catCard is displayed
+    // defining renderRollDice Function. It creates the button image elements and appends to 
+    // the catContainer location. After 2000 milliseconds (2 seconds) the buttonImg is removed 
+    // and the catCard is displayed
     function renderRollDice() {
 
         if (document.querySelector('.cat-card')) {
@@ -210,9 +193,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
         
         const buttonImg = makeEl("img");
-        buttonImg.src = "https://c.tenor.com/S41MIiFewhoAAAAC/dice-ballin.gif"
-        buttonImg.alt = "Rolling the Dice"
-        diceContainer.append(buttonImg)
+        buttonImg.src = "https://c.tenor.com/S41MIiFewhoAAAAC/dice-ballin.gif";
+        buttonImg.alt = "Rolling the Dice";
+        diceContainer.append(buttonImg);
 
         //remove the roll-dice button image after 2 seconds
         setTimeout(function() {
@@ -221,10 +204,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
         }
 
     // this function rolls for stats. It invokes the statsCalc to make
-    // higher stats rarer than lower stats
-    // calculates a stat by rolling two five-sided dice
+    // extreme stats rare.
+    // calculates a stat by rolling two five-sided dice.
     function statsCalc() {
-        const randNum = getRandomInt(25);
+        const randNum = getRandomInt(26);
         let stat;
         if (randNum === 0) {
             stat = 1;
@@ -251,6 +234,5 @@ document.addEventListener('DOMContentLoaded', (e) => {
             return 1;
         }
         return stat;
-    }
- 
+    } 
 })
