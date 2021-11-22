@@ -2,7 +2,7 @@
   "cats": [
     {
       "name": "Sally Stroganoff",
-      "img": "https://cataas.com//cat/61009bfacaacc400184f6b14",
+      "img": "https://cataas.com/cat/61009bfacaacc400184f6b14",
       "meowability": 1,
       "felineFerocity": 7,
       "cuddleProwess": 7,
@@ -11,7 +11,7 @@
     },
     {
       "name": "Beef Rainbow",
-      "img": "https://cataas.com//cat/61009bfccaacc400184f6b40",
+      "img": "https://cataas.com/cat/61009bfccaacc400184f6b40",
       "meowability": 9,
       "felineFerocity": 4,
       "cuddleProwess": 1,
@@ -20,7 +20,7 @@
     },
     {
       "name": "Sally Octothorpe",
-      "img": "https://cataas.com//cat/5d39a21a14ca600011538e2d",
+      "img": "https://cataas.com/cat/5d39a21a14ca600011538e2d",
       "meowability": 7,
       "felineFerocity": 8,
       "cuddleProwess": 4,

@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const catPic = makeEl('img');
         const catName = makeEl('h3');
         const userName = makeEl('h4');
-
+        const deleteButton = makeEl('button');
         // Add catStatsBox
         const catStatsBox = makeEl("span");
 
@@ -63,6 +63,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catPic.className = 'mini-cat-image';
         catName.textContent = cat.name;
         userName.textContent = `Claimed by ${cat.userName}`;
+        deleteButton.textContent = "Delete Cat";
+        deleteButton.id = "deleteBttn";
+        deleteButton.type = "click";
+        deleteButton.addEventListener("click",deleteCat);
+
 
         // catStatsBox text content
         catStatsBox.className = "tooltiptext";
@@ -71,7 +76,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         catStatsBox.textContent += `Cuddle Prowess: ${cat.cuddleProwess}`
         
         // added catStatsBox to append
-        catCard.append(catPic,catName,userName,catStatsBox);
+        catCard.append(catPic,catName,userName,catStatsBox,deleteButton);
         menagerie.append(catCard);
 
         // Add a mouseover hover event
@@ -117,6 +122,20 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .catch(error=>console.error("createCat",error));
         
         
+    }
+
+    function deleteCat(event) {
+        event.preventDefault();
+        const catNum = event.target.parentNode.id.match(/(\d+)/)[0];
+        fetch(BASE_URL+"/"+catNum,{
+            method: 'DELETE',
+            headers: {
+            'Content-Type': 'application/json'
+            },  
+        })
+        .then(resp=>resp.json())
+        .then(event.target.parentNode.remove())
+        .catch(error=>console.error("addCatToMenagerie",error));;
     }
 
     function getRandomInt(max) {
